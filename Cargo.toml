@@ -1,0 +1,12 @@
+[package]
+name = "fsa"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+# default = ["zip"]
+zip = ["dep:zip"]
+
+[dependencies]
+derive_more = { version = "2.0.1", features = ["from"] }
+zip = { version = "2.2.3", optional = true }
