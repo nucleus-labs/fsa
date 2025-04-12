@@ -9,4 +9,4 @@ zip = ["dep:zip"]
 
 [dependencies]
 derive_more = { version = "2.0.1", features = ["from"] }
-zip = { version = "2.2.3", optional = true }
+zip = { version = "2.6.1", optional = true }
