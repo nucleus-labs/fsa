@@ -5,6 +5,9 @@ use std::io::Error as IoError;
 
 #[derive(derive_more::From, Debug)]
 pub enum FsError {
+    NotAFile(String),
+    NotADirectory(String),
+
     #[from]
     IoError(IoError),
     #[from]
@@ -21,6 +24,8 @@ pub enum FsError {
 impl std::fmt::Display for FsError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
+            FsError::NotAFile(path) => write!(f, "Not a file: {path}"),
+            FsError::NotADirectory(path) => write!(f, "Not a directory: {path}"),
             FsError::IoError(error) => write!(f, "{error}"),
             #[cfg(feature = "zip")]
             FsError::ZipError(zerr) => write!(f, "{zerr}"),
